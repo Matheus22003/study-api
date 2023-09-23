@@ -22,15 +22,15 @@ jobs:
     - name: Log in to registry
       uses: docker/login-action@v2
       with:
-        registry: https://mcr.microsoft.com/
-        username: ${{ secrets.AzureAppService_ContainerUsername_248471d9c4c246ae87a6e67b2493c9ea }}
-        password: ${{ secrets.AzureAppService_ContainerPassword_f3ea01f125ac46c8b3f08978bd080b99 }}
+        registry: https://index.docker.io/v1/
+        username: ${{ secrets.AzureAppService_ContainerUsername_6a641fe921464a62a3bf725e13ac8960 }}
+        password: ${{ secrets.AzureAppService_ContainerPassword_523c1f8d72554876a2c71ae7b092bf77 }}
 
     - name: Build and push container image to registry
       uses: docker/build-push-action@v3
       with:
         push: true
-        tags: mcr.microsoft.com/${{ secrets.AzureAppService_ContainerUsername_248471d9c4c246ae87a6e67b2493c9ea }}/appsvc/staticsite:${{ github.sha }}
+        tags: index.docker.io/${{ secrets.AzureAppService_ContainerUsername_6a641fe921464a62a3bf725e13ac8960 }}/dijounas/study:${{ github.sha }}
         file: ./Dockerfile
 
   deploy:
@@ -47,5 +47,5 @@ jobs:
       with:
         app-name: 'rm87056-checkpoint1'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_093ff9e6ec1e4826b56cf2c183d45d64 }}
-        images: 'mcr.microsoft.com/${{ secrets.AzureAppService_ContainerUsername_248471d9c4c246ae87a6e67b2493c9ea }}/appsvc/staticsite:${{ github.sha }}'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_e4e373cd128644818d1746a4a59d7080 }}
+        images: 'index.docker.io/${{ secrets.AzureAppService_ContainerUsername_6a641fe921464a62a3bf725e13ac8960 }}/dijounas/study:${{ github.sha }}'
