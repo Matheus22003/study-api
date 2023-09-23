@@ -17,7 +17,7 @@ public class Application implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		System.out.println("Implementando run");
-		LOG.info("Estou testando o log");
+		System.out.println("Implementando run docker");
+		LOG.info("Estou testando o log docker");
 	}	
 }
